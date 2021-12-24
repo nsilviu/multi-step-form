@@ -1,8 +1,8 @@
 import "./App.css";
-import MultiForm from"./components/MultiForm";
+import MultiForm from "./components/MultiForm";
 
-function App(){
-  return(
+function App() {
+  return (
     <div className="App">
       <MultiForm />
     </div>
