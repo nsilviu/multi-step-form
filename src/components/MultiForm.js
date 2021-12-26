@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import ContactInfo from "./ContactInfo";
 import LocationInfo from "./LocationInfo";
+import { Form } from "react-bootstrap";
 
 const MultiForm = () => {
   const [values, setValues] = useState({
