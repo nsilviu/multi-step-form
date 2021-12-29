@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+#btn-check-outlined {
+  color:#282c34;
+}

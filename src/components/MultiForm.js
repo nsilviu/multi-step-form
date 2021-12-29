@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import ContactInfo from "./ContactInfo";
 import LocationInfo from "./LocationInfo";
-import { Form } from "react-bootstrap";
+import { documente } from "./documente";
 
 const MultiForm = () => {
   const [values, setValues] = useState({
-    first_name: "",
-    last_name: "",
+    nume_complet: "",
+    plate_number: "",
     gender: "",
     email: "",
     phone_number: "",
     city: "",
     state: "",
   });
+
+  const [checked, setChecked] = useState(1,3);
 
   const [step, setStep] = useState(1);
 
@@ -35,14 +37,17 @@ const MultiForm = () => {
     setValues({ ...values, [name]: e.target.value });
   };
 
-  console.log(values);
+  const handleToggle = (val) => {
+    setChecked(val);
+    console.log(val);
+  };
   return (
     <div className="bg-dark vh-100">
       <div className="container d-flex justify-content-center align-items-center">
         <div className="card p-3 w-50 mt-5">
           {
             {
-              1: <PersonalInfo handleChange={handleChange} />,
+              1: <PersonalInfo handleChange={handleChange} handleToggle={handleToggle} />,
               2: <ContactInfo handleChange={handleChange} />,
               3: <LocationInfo handleChange={handleChange} />,
             }[step]
