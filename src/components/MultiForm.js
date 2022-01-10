@@ -12,10 +12,8 @@ const MultiForm = () => {
     email: "",
     phone_number: "",
     city: "",
-    state: "",
+    alte_documente: "",
   });
-
-  const [checked, setChecked] = useState(1,3);
 
   const [step, setStep] = useState(1);
 
@@ -35,19 +33,16 @@ const MultiForm = () => {
 
   const handleChange = (name) => (e) => {
     setValues({ ...values, [name]: e.target.value });
+    console.log(values);
   };
 
-  const handleToggle = (val) => {
-    setChecked(val);
-    console.log(val);
-  };
   return (
     <div className="bg-dark vh-100">
       <div className="container d-flex justify-content-center align-items-center">
-        <div className="card p-3 w-50 mt-5">
+        <div className="card p-3 w-3/4 mt-5">
           {
             {
-              1: <PersonalInfo handleChange={handleChange} handleToggle={handleToggle} />,
+              1: <PersonalInfo handleChange={handleChange} />,
               2: <ContactInfo handleChange={handleChange} />,
               3: <LocationInfo handleChange={handleChange} />,
             }[step]

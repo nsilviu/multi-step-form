@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.button-rep { 
+  width: 100px !important;
+  max-width: 100% !important;
+  /* max-height: 100% !important; */
+  height: 100px !important;
+  word-wrap: initial;
+  padding: 0px;
+  font-size:12px;
+  margin:5px;
+  border-radius: initial !important;
+  flex-grow: 1 !important;
+}
+
+.btn-group:focus{
+  box-shadow: white !important;
+}
+
+.container-rep {
+  display:flex;
+  margin-top: 4px;
+  flex-wrap:wrap;
+  width:1/2;
+  justify-content: center;
+  box-shadow: initial;
+}
+
