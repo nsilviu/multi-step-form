@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import { documente } from "./documente";
 
-const ContactInfo = ({ handleChange }) => {
-  const [checked, setChecked] = useState([]);
+const ContactInfo = ({ handleChange, values }) => {
+  const [checked, setChecked] = useState(values.documente);
 
   const handleToggle = (val) => {
-    console.log("handleToggle");
     setChecked(val);
     console.log(val);
   };
+  useEffect(() => {
+    values.documente = checked;
+    console.log(values);
+  });
 
   return (
     <div className="d-flex flex-column align-items-center">
@@ -36,6 +39,7 @@ const ContactInfo = ({ handleChange }) => {
               id={doc.id}
               key={doc.id}
               value={doc.id}
+              name={doc.id}
             >
               {doc.icon}
               <p></p>

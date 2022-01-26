@@ -7,12 +7,11 @@ const MultiForm = () => {
   const [values, setValues] = useState({
     nume_complet: "",
     plate_number: "",
-    gender: "",
     email: "",
     phone_number: "",
-    city: "",
     alte_documente: "",
     documente: [],
+    reparatii: [],
   });
 
   const [step, setStep] = useState(1);
@@ -54,8 +53,8 @@ const MultiForm = () => {
           {
             {
               1: <PersonalInfo handleChange={handleChange} />,
-              2: <Documents handleChange={handleChange} />,
-              3: <Repairs handleChange={handleChange} />,
+              2: <Documents handleChange={handleChange} values={values} />,
+              3: <Repairs handleChange={handleChange} values={values} />,
             }[step]
           }
           <div className="d-flex justify-content-around px-5 mt-5">

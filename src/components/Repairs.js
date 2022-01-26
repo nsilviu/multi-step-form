@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import { reparatii } from "./reparatii";
 
-const LocationInfo = () => {
+const Repairs = ({ values }) => {
   const [checked, setChecked] = useState([]);
 
   const handleRep = (rep) => {
     setChecked(rep);
   };
 
+  useEffect(() => {
+    values.reparatii = checked;
+    console.log(values);
+  });
   return (
     <div className="d-flex flex-column align-items-center">
       <p className="scale-30">
@@ -48,4 +52,4 @@ const LocationInfo = () => {
   );
 };
 
-export default LocationInfo;
+export default Repairs;
