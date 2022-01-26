@@ -1,9 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import { documente } from "./documente";
 
 const ContactInfo = ({ handleChange }) => {
-
   const [checked, setChecked] = useState([]);
 
   const handleToggle = (val) => {
@@ -14,11 +13,35 @@ const ContactInfo = ({ handleChange }) => {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h1>Formular Audi Dropbox</h1>
-      <p>Selectati documentele lasate in Audi DropBox</p>
-      <Form.Group className="w-30 mt-4" controlId="btn-check-outlined" >
-        <ToggleButtonGroup type="checkbox" className="container-rep" value={checked} onChange={handleToggle}>
-          {documente.map(doc => (<ToggleButton variant="outline-primary" className="button-rep"id={doc.id} key={doc.id} value={doc.id}>{doc.name}</ToggleButton>))}
+      <p className="scale-30">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/92/Audi-Logo_2016.svg"
+          className="logo"
+          alt="logo-audi"
+        />
+      </p>
+      <h1>Audi Dropbox</h1>
+      <h5>Selectati documentele lasate in Audi DropBox</h5>
+      <Form.Group className="w-30 mt-4" controlId="btn-check-outlined">
+        <ToggleButtonGroup
+          type="checkbox"
+          className="container-rep btn-group-m"
+          value={checked}
+          onChange={handleToggle}
+        >
+          {documente.map((doc) => (
+            <ToggleButton
+              variant="outline-primary"
+              className="button-rep"
+              id={doc.id}
+              key={doc.id}
+              value={doc.id}
+            >
+              {doc.icon}
+              <p></p>
+              {doc.name}
+            </ToggleButton>
+          ))}
         </ToggleButtonGroup>
       </Form.Group>
       <Form.Group className="w-75 mt-4">
@@ -26,8 +49,8 @@ const ContactInfo = ({ handleChange }) => {
           placeholder="Alte documente"
           onChange={handleChange("alte_documente")}
           name="alte_documente"
-          />
-      </Form.Group>    
+        />
+      </Form.Group>
       {/* </Form.Group>
       <Form.Group className="w-75 mt-4">
         <Form.Control

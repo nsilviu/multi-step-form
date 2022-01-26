@@ -2,12 +2,17 @@ import React from "react";
 import { Form } from "react-bootstrap";
 
 const PersonalInfo = ({ handleChange }) => {
-  
-
   return (
     <div className="d-flex flex-column align-items-center">
-      <h1>Formular Audi Dropbox</h1>
-      <h3>Personal Info</h3>
+      <p className="scale-30">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/92/Audi-Logo_2016.svg"
+          className="logo"
+          alt="logo-audi"
+        />
+      </p>
+      <h1>Audi Dropbox</h1>
+      <h5>Informatii generale</h5>
       <Form.Group className="w-75 mt-4">
         <Form.Control
           placeholder="Nume Complet"
@@ -41,15 +46,3 @@ const PersonalInfo = ({ handleChange }) => {
 };
 
 export default PersonalInfo;
-
-      {/* <Form.Group className="w-75 mt-4">
-        <Form.Control
-          placeholder="First Name"
-          as="select"
-          onChange={handleChange("gender")}
-          name="gender"
-        >
-          <option>Male</option>
-          <option>Female</option>
-        </Form.Control>
-      </Form.Group> */}

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
-import ContactInfo from "./ContactInfo";
-import LocationInfo from "./LocationInfo";
-import { documente } from "./documente";
+import Documents from "./Documents";
+import Repairs from "./Repairs";
 
 const MultiForm = () => {
   const [values, setValues] = useState({
@@ -13,6 +12,7 @@ const MultiForm = () => {
     phone_number: "",
     city: "",
     alte_documente: "",
+    documente: [],
   });
 
   const [step, setStep] = useState(1);
@@ -36,15 +36,26 @@ const MultiForm = () => {
     console.log(values);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:3001/api/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...values }),
+    });
+  };
+
   return (
     <div className="bg-dark vh-100">
       <div className="container d-flex justify-content-center align-items-center">
-        <div className="card p-3 w-3/4 mt-5">
+        <div className="card p-3 w-100 h-100 mt-5">
           {
             {
               1: <PersonalInfo handleChange={handleChange} />,
-              2: <ContactInfo handleChange={handleChange} />,
-              3: <LocationInfo handleChange={handleChange} />,
+              2: <Documents handleChange={handleChange} />,
+              3: <Repairs handleChange={handleChange} />,
             }[step]
           }
           <div className="d-flex justify-content-around px-5 mt-5">
@@ -53,7 +64,10 @@ const MultiForm = () => {
                 Back
               </button>
             ) : null}
-            <button className="btn btn-warning" onClick={nextStep}>
+            <button
+              className="btn btn-warning"
+              onClick={step === 3 ? handleSubmit : nextStep}
+            >
               {step === 3 ? "Submit" : "Next"}
             </button>
           </div>
