@@ -54,7 +54,7 @@ const MultiForm = () => {
             {
               1: <PersonalInfo handleChange={handleChange} />,
               2: <Documents handleChange={handleChange} values={values} />,
-              3: <Repairs handleChange={handleChange} values={values} />,
+              3: <Repairs values={values} />,
             }[step]
           }
           <div className="d-flex justify-content-around px-5 mt-5">
