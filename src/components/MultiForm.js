@@ -44,6 +44,8 @@ const MultiForm = () => {
       },
       body: JSON.stringify({ ...values }),
     });
+    setStep(1);
+    alert("Masina a fost predata cu succes!")
   };
 
   return (
