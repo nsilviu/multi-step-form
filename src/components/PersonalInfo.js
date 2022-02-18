@@ -11,7 +11,7 @@ const PersonalInfo = ({ handleChange }) => {
           alt="logo-audi"
         />
       </p>
-      <h1>Audi Dropbox</h1>
+      <h1>Dropbox</h1>
       <h5>Informatii generale</h5>
       <Form.Group className="w-75 mt-4">
         <Form.Control

@@ -22,7 +22,7 @@ const Repairs = ({ values }) => {
           alt="logo-audi"
         />
       </p>
-      <h1>Audi Dropbox</h1>
+      <h1>Dropbox</h1>
       <h5>Selectati reparatiile dorite</h5>
       <Form.Group className="align-items-center" value={checked}>
         <Form.Group className="w-30 mt-4" controlId="btn-check-outlined">

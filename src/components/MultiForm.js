@@ -37,7 +37,7 @@ const MultiForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3001/api/send", {
+    const response = await fetch("https://form.porscheinterauto.app:3001/api/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -45,7 +45,7 @@ const MultiForm = () => {
       body: JSON.stringify({ ...values }),
     });
     setStep(1);
-    alert("Masina a fost predata cu succes!")
+    alert("Masina a fost predata cu succes!");
   };
 
   return (

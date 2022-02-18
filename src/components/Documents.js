@@ -23,7 +23,7 @@ const ContactInfo = ({ handleChange, values }) => {
           alt="logo-audi"
         />
       </p>
-      <h1>Audi Dropbox</h1>
+      <h1>Dropbox</h1>
       <h5>Selectati documentele lasate in Audi DropBox</h5>
       <Form.Group className="w-30 mt-4" controlId="btn-check-outlined">
         <ToggleButtonGroup
