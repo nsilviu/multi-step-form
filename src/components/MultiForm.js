@@ -37,7 +37,7 @@ const MultiForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://form.porscheinterauto.app:3001/api/send", {
+    const response = await fetch("https://form.porscheinterauto.app/api/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
