@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PersonalInfo from "./PersonalInfo";
 import Documents from "./Documents";
 import Repairs from "./Repairs";
@@ -13,6 +13,13 @@ const MultiForm = () => {
     documente: [],
     reparatii: [],
   });
+
+  const [sizeDoc, setSizeDoc] = useState(values.documente.length);
+  const [sizeRep, setSizeRep] = useState(values.reparatii.length);
+
+useEffect(() => {
+  console.log(sizeDoc);
+});
 
   const [step, setStep] = useState(1);
 
@@ -32,7 +39,6 @@ const MultiForm = () => {
 
   const handleChange = (name) => (e) => {
     setValues({ ...values, [name]: e.target.value });
-    console.log(values);
   };
 
   const handleSubmit = async (e) => {
@@ -54,9 +60,9 @@ const MultiForm = () => {
         <div className="card p-3 w-100 h-100 mt-5">
           {
             {
-              1: <PersonalInfo handleChange={handleChange} />,
-              2: <Documents handleChange={handleChange} values={values} />,
-              3: <Repairs values={values} />,
+              2: <PersonalInfo handleChange={handleChange} />,
+              1: <Documents handleChange={handleChange} values={values} sizeDoc={sizeDoc} setSizeDoc={setSizeDoc}/>,
+              3: <Repairs values={values} sizeRep={sizeRep} />,
             }[step]
           }
           <div className="d-flex justify-content-around px-5 mt-5">
@@ -68,6 +74,7 @@ const MultiForm = () => {
             <button
               className="btn btn-warning"
               onClick={step === 3 ? handleSubmit : nextStep}
+              disabled={sizeDoc > 0 ? false : true}
             >
               {step === 3 ? "Submit" : "Next"}
             </button>

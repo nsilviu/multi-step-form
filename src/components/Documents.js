@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import { documente } from "./documente";
 
-const ContactInfo = ({ handleChange, values }) => {
+const Documents = ({ handleChange, values, sizeDoc, setSizeDoc }) => {
   const [checked, setChecked] = useState(values.documente);
 
   const handleToggle = (val) => {
     setChecked(val);
-    console.log(val);
   };
+
   useEffect(() => {
     values.documente = checked;
-    console.log(values);
+    setSizeDoc(values.documente.length);
+    console.log(sizeDoc);
   });
 
   return (
@@ -74,4 +75,4 @@ const ContactInfo = ({ handleChange, values }) => {
   );
 };
 
-export default ContactInfo;
+export default Documents;
