@@ -2,18 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import { documente } from "./documente";
 
-const Documents = ({ handleChange, values, sizeDoc, setSizeDoc }) => {
+const Documents = ({ handleChange, values, setValues, setSizeDoc }) => {
   const [checked, setChecked] = useState(values.documente);
 
-  const handleToggle = (val) => {
+  const handleDoc = (val) => {
     setChecked(val);
   };
 
   useEffect(() => {
-    values.documente = checked;
-    setSizeDoc(values.documente.length);
-    console.log(sizeDoc);
-  });
+    setValues({...values, documente:checked});
+    setSizeDoc(checked.length);
+  },[checked]);
 
   return (
     <div className="d-flex flex-column align-items-center">
@@ -31,7 +30,7 @@ const Documents = ({ handleChange, values, sizeDoc, setSizeDoc }) => {
           type="checkbox"
           className="container-rep btn-group-m"
           value={checked}
-          onChange={handleToggle}
+          onChange={handleDoc}
         >
           {documente.map((doc) => (
             <ToggleButton
@@ -56,21 +55,6 @@ const Documents = ({ handleChange, values, sizeDoc, setSizeDoc }) => {
           name="alte_documente"
         />
       </Form.Group>
-      {/* </Form.Group>
-      <Form.Group className="w-75 mt-4">
-        <Form.Control
-          placeholder="Email"
-          onChange={handleChange("email")}
-          name="email"
-        />
-      </Form.Group>
-      <Form.Group className="w-75 mt-4">
-        <Form.Control
-          placeholder="Phone Number"
-          onChange={handleChange("phone_number")}
-          name="phone_number"
-        />
-      </Form.Group> */}
     </div>
   );
 };

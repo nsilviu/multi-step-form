@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 import { reparatii } from "./reparatii";
 
-const Repairs = ({ values }) => {
+const Repairs = ({values, setValues, setSizeRep }) => {
   const [checked, setChecked] = useState([]);
 
   const handleRep = (rep) => {
@@ -10,9 +10,10 @@ const Repairs = ({ values }) => {
   };
 
   useEffect(() => {
-    values.reparatii = checked;
-    console.log(values);
-  });
+    setValues({...values, reparatii:checked});
+    setSizeRep(checked.length);
+  },[checked]);
+
   return (
     <div className="d-flex flex-column align-items-center">
       <p className="scale-30">

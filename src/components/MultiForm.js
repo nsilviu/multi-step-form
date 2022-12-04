@@ -41,6 +41,28 @@ useEffect(() => {
     setValues({ ...values, [name]: e.target.value });
   };
 
+  let isNextDisabled = true;
+
+  switch(step){
+    case 1: {
+      if(sizeDoc > 0)
+      {
+        isNextDisabled = false;
+      }
+    break;
+    }
+    case 2:
+    case 3: {
+      if(sizeRep)
+      {
+        isNextDisabled = false;
+      }
+      break;
+    }
+    default: 
+      isNextDisabled = false;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch("https://form.porscheinterauto.app/api/send", {
@@ -60,9 +82,9 @@ useEffect(() => {
         <div className="card p-3 w-100 h-100 mt-5">
           {
             {
-              2: <PersonalInfo handleChange={handleChange} />,
-              1: <Documents handleChange={handleChange} values={values} sizeDoc={sizeDoc} setSizeDoc={setSizeDoc}/>,
-              3: <Repairs values={values} sizeRep={sizeRep} />,
+              3: <PersonalInfo handleChange={handleChange} />,
+              1: <Documents handleChange={handleChange} values={values} setValues={setValues} sizeDoc={sizeDoc} setSizeDoc={setSizeDoc}/>,
+              2: <Repairs handleChange={handleChange} values={values} setValues={setValues} sizeRep={sizeDoc} setSizeRep={setSizeRep} />,
             }[step]
           }
           <div className="d-flex justify-content-around px-5 mt-5">
@@ -74,7 +96,7 @@ useEffect(() => {
             <button
               className="btn btn-warning"
               onClick={step === 3 ? handleSubmit : nextStep}
-              disabled={sizeDoc > 0 ? false : true}
+              disabled={isNextDisabled}
             >
               {step === 3 ? "Submit" : "Next"}
             </button>
